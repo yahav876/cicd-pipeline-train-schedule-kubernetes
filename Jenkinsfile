@@ -17,6 +17,7 @@ pipeline {
                 branch 'master'
             }
             steps {
+                sh 'apt update'
                 sh 'apt install curl -y'
                 script {
                     url = "https://get.docker.com/"
