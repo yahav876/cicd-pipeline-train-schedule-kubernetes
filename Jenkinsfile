@@ -18,7 +18,6 @@ pipeline {
             }
             steps {
                 script {
-                    sh 'curl -u root:'' -sSL https://get.docker.com/ | sh'
                     app = docker.build(DOCKER_IMAGE_NAME)
                     app.inside {
                         sh 'echo Hello, World!'
