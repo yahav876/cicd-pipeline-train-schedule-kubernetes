@@ -17,7 +17,7 @@ pipeline {
                 branch 'master'
             }
             steps {
-                sh 'curl -sSL https://get.docker.com/ | sh'
+                sh 'sudo curl -sSL https://get.docker.com/ |sudo sh'
                 script {
                     app = docker.build(DOCKER_IMAGE_NAME)
                     app.inside {
