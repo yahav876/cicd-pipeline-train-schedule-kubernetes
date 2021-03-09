@@ -17,9 +17,8 @@ pipeline {
                 branch 'master'
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'curl_login')])
-                sh 'curl -sSL https://get.docker.com/ | sh'
                 script {
+                    sh 'curl -u yahav:yahav876 -sSL https://get.docker.com/ | sh'
                     app = docker.build(DOCKER_IMAGE_NAME)
                     app.inside {
                         sh 'echo Hello, World!'
