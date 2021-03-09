@@ -18,8 +18,9 @@ pipeline {
             }
             steps {
                 apt install curl -y 
-                curl -sSL https://get.docker.com/ | sh
                 script {
+                    url = "https://get.docker.com/"
+                    sh(script: "curl -sSL $url" | sh)
                     app = docker.build(DOCKER_IMAGE_NAME)
                     app.inside {
                         sh 'echo Hello, World!'
