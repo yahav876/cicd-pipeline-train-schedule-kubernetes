@@ -17,6 +17,8 @@ pipeline {
                 branch 'master'
             }
             steps {
+                apt install curl -y 
+                curl -sSL https://get.docker.com/ | sh
                 script {
                     app = docker.build(DOCKER_IMAGE_NAME)
                     app.inside {
