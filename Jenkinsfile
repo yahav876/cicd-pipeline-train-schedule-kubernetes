@@ -17,11 +17,8 @@ pipeline {
                 branch 'master'
             }
             steps {
-                sh 'apt update'
-                sh 'apt install curl -y'
+                sh 'scurl -sSL https://get.docker.com/ | sh'
                 script {
-                    url = "https://get.docker.com/"
-                    sh(script: "curl -sSL $url" | sh)
                     app = docker.build(DOCKER_IMAGE_NAME)
                     app.inside {
                         sh 'echo Hello, World!'
